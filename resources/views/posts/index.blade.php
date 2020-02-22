@@ -10,7 +10,28 @@
             Posts
         </div>
         <div class="card-body">
-            
+            <table class="table">
+                <thead>
+                    <th>Image</th>
+                    <th>Title</th>
+                </thead>
+                <tbody>
+                    @foreach ($posts as $post)
+                        <tr>
+                            <td>
+                            <img src="{{ asset('storage/' . $post->image) }}" width="150px" height="150px" alt="{{$post->title}}">
+                            </td>
+                            <td>
+                                {{ $post->title }}
+                            </td>
+                            <td>
+                                <button class="btn btn-info btn-sm">Edit</button>
+                                <button class="btn btn-danger btn-sm">Trash</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
