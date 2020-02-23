@@ -9,6 +9,7 @@
             Categories
         </div>
         <div class="card-body">
+            @if ($categories->count() > 0)
             <table class="table">
                 <thead>
                     <th>Name</th>
@@ -30,6 +31,10 @@
                     @endforeach
                 </tbody>
             </table>
+
+            @else
+                <h3 class="text-center">No categories yet.</h3>
+            @endif
 
             <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
