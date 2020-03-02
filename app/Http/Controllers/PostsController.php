@@ -16,6 +16,12 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('verifyCategoriesCount')->only(['create','store']);
+    }
+
     public function index()
     {
         return view('posts.index')->with('posts',Post::all());
