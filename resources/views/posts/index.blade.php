@@ -17,13 +17,12 @@
                     <th>Title</th>
                     <th>Category</th>
                     <th></th>
-                    <th></th>
                 </thead>
                 <tbody>
                     @foreach ($posts as $post)
                         <tr>
                             <td>
-                            <img src="{{ asset('storage/' . $post->image) }}" width="130px" height="150px" alt="{{$post->title}}">
+                            <img src="{{ asset('storage/' . $post->image) }}" width="200px" height="150px" alt="{{$post->title}}">
                             </td>
                             <td>
                                 {{ $post->title }}
