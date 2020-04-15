@@ -4,6 +4,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class PostsTableSeeder extends Seeder
 {
@@ -14,6 +15,19 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        $author1 = App\User::create([
+            'name' => 'Fauzan',
+            'email' => 'fauzan@radyalabs.com',
+            'password' => Hash::make('kosakionodera')
+        ]);
+
+        $author2 = App\User::create([
+            'name' => 'Kosaki',
+            'email' => 'Kosaki@radyalabs.com',
+            'password' => Hash::make('kosakionodera')
+        ]);
+
         $category1 = Category::create([
             'name' => 'News',
         ]);
@@ -31,10 +45,11 @@ class PostsTableSeeder extends Seeder
             'description' => 'lorem ipsum agaer',
             'content' => 'Agaericus leaenfl KAJeoos KJFBee Hubsin ASjeooe',
             'category_id' => $category1->id,
-            'image' => 'posts/1.jpg'
+            'image' => 'posts/1.jpg',
+            'user_id' => $author1->id
         ]);
 
-        $post2 = Post::create([
+        $post2 = $author2->posts()->create([
             'title' => 'Lorem',
             'description' => 'lorem za agaer',
             'content' => 'wq leaenfl KAJeoos KJFBee Hubsin ASjeooe',
@@ -42,7 +57,7 @@ class PostsTableSeeder extends Seeder
             'image' => 'posts/2.jpg'
         ]);
 
-        $post3 = Post::create([
+        $post3 = $author2->posts()->create([
             'title' => 'Ipsum',
             'description' => 'z za agaer',
             'content' => 'ewq leaenfl KAJeoos KJFBee Hubsin ASjeooe',
@@ -50,7 +65,7 @@ class PostsTableSeeder extends Seeder
             'image' => 'posts/3.jpg'
         ]);
 
-        $post4 = Post::create([
+        $post4 = $author1->posts()->create([
             'title' => 'WW',
             'description' => 'DF za agaer',
             'content' => 'EFEE leaenfl KAJeoos KJFBee Hubsin ASjeooe',
